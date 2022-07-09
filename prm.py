@@ -6,13 +6,11 @@ import torch.nn as nn
 from torchvision import models
 from matplotlib.colors import hsv_to_rgb
 from scipy.ndimage import center_of_mass
-from nest import register
 
 from .models import FC_ResNet 
 from .modules import PeakResponseMapping
 
 
-@register
 def fc_resnet50(num_classes: int = 20, pretrained: bool = True) -> nn.Module:
     """FC ResNet50.
     """
@@ -20,7 +18,6 @@ def fc_resnet50(num_classes: int = 20, pretrained: bool = True) -> nn.Module:
     return model
 
 
-@register
 def peak_response_mapping(
     backbone: nn.Module,
     enable_peak_stimulation: bool = True,
@@ -41,7 +38,6 @@ def peak_response_mapping(
     return model
 
 
-@register
 def prm_visualize(
     instance_list: List[dict], 
     class_names: Optional[List[str]]=None,

@@ -5,10 +5,13 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import numpy as np
-from scipy.misc import imresize
+from PIL import Image
 
 from ..functions import pr_conv2d, peak_stimulation
 
+def imresize(old_im, size):
+    im = Image.fromarray(old_im)
+    return np.array(im.resize(size, Image.BILINEAR))
 
 class PeakResponseMapping(nn.Sequential):
 
